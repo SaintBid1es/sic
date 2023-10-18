@@ -1,0 +1,123 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static List<Note> notes;
+    static int currentIndex;
+
+    static void Main(string[] args)
+    {
+        InitializeNotes();
+
+
+        DisplayMenu();
+
+        while (true)
+        {
+            ConsoleKeyInfo key = Console.ReadKey(true);
+
+
+            if (key.Key == ConsoleKey.LeftArrow)
+            {
+                ChangeNoteIndex(-1);
+                DisplayMenu();
+            }
+            else if (key.Key == ConsoleKey.RightArrow)
+            {
+
+                ChangeNoteIndex(1);
+                DisplayMenu();
+            }
+            else if (key.Key == ConsoleKey.Enter)
+            {
+
+                DisplayNoteDetails();
+            }
+        }
+    }
+
+    static void InitializeNotes()
+    {
+
+        notes = new List<Note>
+        {
+            new Note("Заметка 1", "Описание заметки 1", new DateTime(2023, 10, 6), "Выполнить домашнее задание до 7 октября"),
+            new Note("Заметка 2", "Описание заметки 2", new DateTime(2023, 12, 8), "Поехать на коньки"),
+            new Note("Заметка 3", "Описание заметки 3", new DateTime(2023, 2, 13), "сыграть в футбол"),
+
+        };
+
+        currentIndex = 0;
+    }
+
+    static void DisplayMenu()
+    {
+        Console.Clear();
+
+
+        Console.WriteLine("Ежедневник\n");
+
+        for (int i = 0; i < notes.Count; i++)
+        {
+            if (i == currentIndex)
+            {
+                Console.WriteLine("--->");
+            }
+
+
+            Console.WriteLine($"{notes[i].Title}");
+        }
+
+     
+        Console.WriteLine("\nИспользуйте стрелки влево и вправо для навигации. Нажмите Enter для отображения подробной информации.");
+    }
+
+    static void ChangeNoteIndex(int increment)
+    {
+        currentIndex += increment;
+
+
+        if (currentIndex < 0)
+        {
+            currentIndex = notes.Count - 1;
+        }
+        else if (currentIndex >= notes.Count)
+        {
+            currentIndex = 0;
+        }
+    }
+
+    static void DisplayNoteDetails()
+    {
+        Console.Clear();
+
+
+        Console.WriteLine($"Название: {notes[currentIndex].Title}");
+        Console.WriteLine($"Описание: {notes[currentIndex].Description}");
+        Console.WriteLine($"Дата: {notes[currentIndex].Date.ToShortDateString()}");
+        Console.WriteLine($"Выполнить до: {notes[currentIndex].DueDate}");
+
+
+        Console.WriteLine("\nНажмите любую клавишу для возврата в меню");
+
+        Console.ReadKey();
+        DisplayMenu();
+    }
+
+    class Note
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public DateTime Date { get; set; }
+        public string DueDate { get; set; }
+
+        public Note(string title, string description, DateTime date, string dueDate)
+        {
+            Title = title;
+            Description = description;
+            Date = date;
+            DueDate = dueDate;
+        }
+    }
+}
