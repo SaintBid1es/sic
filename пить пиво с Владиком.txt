@@ -1,0 +1,112 @@
+namespace proba
+{
+    internal class Program
+    {
+        static void Main()
+        {
+
+            int position = 1;
+            Menu();
+            ConsoleKeyInfo key = Console.ReadKey();
+            while (key.Key != ConsoleKey.Enter)
+            {
+               
+                if (key.Key == ConsoleKey.UpArrow)
+                {
+                    position--;
+                }
+                else if (key.Key == ConsoleKey.DownArrow)
+                {
+                    position++;
+                }
+
+                Console.Clear();
+                Menu();
+                Console.SetCursorPosition(0, position);
+                Console.WriteLine("-->");
+                key = Console.ReadKey();
+            }
+            if (position == 1)
+            {
+                Polyanka();
+            }
+            else if (position == 2)
+            {
+                garaj();
+            }
+            else if (position == 3 )
+            {
+                Dota();
+            }
+            else if (position==4)
+            {
+                pivo();
+            }
+
+            static void Menu()
+            {
+                Console.WriteLine("   Выбрана дата 25.10.2023");
+                Console.WriteLine("   1.Подарить любимой вкусняшки и покормить ");
+                Console.WriteLine("   2.Сходить в гараж");
+                Console.WriteLine("   3.С владиком в Доту");
+                Console.WriteLine("   4.С владиком выпить по пивку");
+            }
+            static void Polyanka()
+            {
+                Console.Clear();
+                Console.WriteLine("Подарить любимой вкусншки и покормить");
+                Console.WriteLine("---------------------------");
+                Console.WriteLine("Описание: С 3 пары покормить Онигири ");
+                Console.WriteLine("Дата: 06.10.2022 ");
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Main();
+                }
+            }
+            static void garaj()
+            {
+                Console.Clear();
+                Console.WriteLine("Сходить в гараж ");
+                Console.WriteLine("--------------------------");
+                Console.WriteLine("Описание: Полюбоваться черной машиной Dodge");
+                Console.WriteLine("Дата: 13.05.2023");
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Main();
+                }
+            }
+            static void Dota()
+            {
+                    Console.Clear();
+                    Console.WriteLine("Пойти с Владиком в доту");
+                    Console.WriteLine("------------------------------------");
+                    Console.WriteLine("Описание:Пригласить Владика(любимого) и позвать в лобби  ");
+                    Console.WriteLine("Дата: 04.08.2023");
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    if (key.Key == ConsoleKey.Escape)
+                    {
+                        Console.Clear();
+                        Main();
+                    }
+             }
+            static void pivo()
+            {
+                Console.Clear();
+                Console.WriteLine("Пойти с Владиком по пивку");
+                Console.WriteLine("---------------------------------");
+                Console.WriteLine("Описание: Пригласить Владика(любимого) пойти выпить по пивку Essa");
+                Console.WriteLine("Дата: 07.09.2023");
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Main();
+                }
+            }
+            }
+        }
+    }
