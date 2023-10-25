@@ -4,7 +4,7 @@ namespace proba
     {
         static void Main()
         {
-
+            List<string> pervaya= new List<string>() { " Выбрана дата 25.10.2023\n    1.Подарить любимой вкусняшки и покормить \n    2.Сходить в гараж\n    3.С владиком в Доту\n    4.С владиком выпить по пивку\n    5.Приготовить подарок на новый год" };  
             int position = 1;
             Menu();
             ConsoleKeyInfo key = Console.ReadKey();
@@ -42,22 +42,23 @@ namespace proba
             {
                 pivo();
             }
+            else if (position == 5)
+            {
+                novii_god();
+            }
 
             static void Menu()
             {
-                Console.WriteLine("   Выбрана дата 25.10.2023");
-                Console.WriteLine("   1.Подарить любимой вкусняшки и покормить ");
-                Console.WriteLine("   2.Сходить в гараж");
-                Console.WriteLine("   3.С владиком в Доту");
-                Console.WriteLine("   4.С владиком выпить по пивку");
+                List<string> pervaya = new List<string>() { " Выбрана дата 25.10.2023\n    1.Подарить любимой вкусняшки и покормить \n    2.Сходить в гараж\n    3.С владиком в Доту\n    4.С владиком выпить по пивку\n    5.Приготовить подарок на новый год", "Подарить любимой вкусняшки и покормить\n -------------------- \n Описание: С 3 пары покормить Онигири\nДата: 06.10.2022" };
+                Console.WriteLine(pervaya[0]);
+              
             }
             static void Polyanka()
             {
+                List<string> pervaya = new List<string>() { " Выбрана дата 25.10.2023\n    1.Подарить любимой вкусняшки и покормить \n    2.Сходить в гараж\n    3.С владиком в Доту\n    4.С владиком выпить по пивку\n    5.Приготовить подарок на новый год", "Подарить любимой вкусняшки и покормить\n-------------------------------------------------------- \nОписание: С 3 пары покормить Онигири\nДата: 06.10.2022" };
                 Console.Clear();
-                Console.WriteLine("Подарить любимой вкусншки и покормить");
-                Console.WriteLine("---------------------------");
-                Console.WriteLine("Описание: С 3 пары покормить Онигири ");
-                Console.WriteLine("Дата: 06.10.2022 ");
+                Console.WriteLine(pervaya[1]);
+               
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.Escape)
                 {
@@ -100,6 +101,20 @@ namespace proba
                 Console.WriteLine("---------------------------------");
                 Console.WriteLine("Описание: Пригласить Владика(любимого) пойти выпить по пивку Essa");
                 Console.WriteLine("Дата: 07.09.2023");
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    Main();
+                }
+            }
+            static void novii_god()
+            {
+                Console.Clear();
+                Console.WriteLine("Приготовить подарок на новый год");
+                Console.WriteLine("-----------------------------------------");
+                Console.WriteLine("Описание: Посмотреть на вб подарок ,который понравится человеку");
+                Console.WriteLine("Дата: 03.01.2023");
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.Escape)
                 {
